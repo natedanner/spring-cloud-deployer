@@ -129,9 +129,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.complete);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.complete));
 
 		taskLauncher().destroy(definition.getName());
 	}
@@ -151,9 +150,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.complete);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.complete));
 
 		log.info("Re-Launching {}...", request.getDefinition().getName());
 		String newLaunchId = taskLauncher().launch(request);
@@ -163,9 +161,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(newLaunchId).getState()).isEqualTo(LaunchState.complete);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(newLaunchId).getState()).isEqualTo(LaunchState.complete));
 
 		taskLauncher().destroy(definition.getName());
 	}
@@ -185,9 +182,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.failed);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.failed));
 
 		taskLauncher().destroy(definition.getName());
 	}
@@ -207,9 +203,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running));
 
 		log.info("Cancelling {}...", request.getDefinition().getName());
 		taskLauncher().cancel(launchId);
@@ -217,9 +212,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		timeout = undeploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.cancelled);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.cancelled));
 
 		taskLauncher().destroy(definition.getName());
 	}
@@ -241,9 +235,8 @@ public abstract class AbstractTaskLauncherIntegrationJUnit5Tests extends Abstrac
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(deploymentId).getState()).isEqualTo(LaunchState.complete);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(deploymentId).getState()).isEqualTo(LaunchState.complete));
 		taskLauncher().destroy(definition.getName());
 	}
 

@@ -152,9 +152,8 @@ public class DefaultContainerFactoryTests {
 
         //Attempting to create with an invalid integer set for a port should cause an exception to bubble up.
         ContainerConfiguration containerConfiguration = new ContainerConfiguration("app-test", appDeploymentRequest);
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(NumberFormatException.class);
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(NumberFormatException.class);
     }
 
     @Test
@@ -912,9 +911,8 @@ public class DefaultContainerFactoryTests {
                 .withProbeCredentialsSecret(secret);
 
         ContainerFactory containerFactory = new DefaultContainerFactory(new KubernetesDeployerProperties());
-        assertThatThrownBy(() -> {
-            containerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() ->
+            containerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -1003,9 +1001,8 @@ public class DefaultContainerFactoryTests {
                 .withHostNetwork(true)
                 .withExternalPort(8080);
 
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("The livenessTcpProbePort property must be set");
     }
 
@@ -1029,9 +1026,8 @@ public class DefaultContainerFactoryTests {
                 .withHostNetwork(true)
                 .withExternalPort(8080);
 
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("A readinessTcpProbePort property must be set");
     }
 
@@ -1056,9 +1052,8 @@ public class DefaultContainerFactoryTests {
                 .withHostNetwork(true)
                 .withExternalPort(8080);
 
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("ReadinessTcpProbePort must contain all digits");
     }
 
@@ -1083,9 +1078,8 @@ public class DefaultContainerFactoryTests {
                 .withHostNetwork(true)
                 .withExternalPort(8080);
 
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("LivenessTcpProbePort must contain all digits");
     }
 
@@ -1289,9 +1283,8 @@ public class DefaultContainerFactoryTests {
                 .withHostNetwork(true)
                 .withExternalPort(8080);
 
-        assertThatThrownBy(() -> {
-            defaultContainerFactory.create(containerConfiguration);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() ->
+            defaultContainerFactory.create(containerConfiguration)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("The readinessCommandProbeCommand property must be set");
     }
 

@@ -130,22 +130,22 @@ public class CloudFoundryAppDeployerTests extends AbstractAppDeployerTestSupport
 
 		String deploymentId = this.deployer.deploy(
 				new AppDeploymentRequest(new AppDefinition("test-application", Collections.emptyMap()), resource,
-						Collections.EMPTY_MAP));
+						Collections.emptyMap()));
 
 		assertThat(deploymentId).isEqualTo("test-application-id");
 	}
 
 	@Test
 	void getLog() {
-		final String LOG_RESULTS = "log results";
+		final String logResults = "log results";
 
 		when(this.operations.applications().get(any())).thenReturn(applicationDetailRunningApp());
 		ApplicationLogAccessor applicationLogAccessor = mock(ApplicationLogAccessor.class);
-		when(applicationLogAccessor.getLog(any(), any())).thenReturn(LOG_RESULTS);
+		when(applicationLogAccessor.getLog(any(), any())).thenReturn(logResults);
 		CloudFoundryAppDeployer deployer = new CloudFoundryAppDeployer(this.applicationNameGenerator,
 				this.deploymentProperties,
 				this.operations, this.runtimeEnvironmentInfo, applicationLogAccessor);
-		assertThat(deployer.getLog("test-application-id")).isEqualTo(LOG_RESULTS);
+		assertThat(deployer.getLog("test-application-id")).isEqualTo(logResults);
 	}
 	@Test
 	void getLogWithNoResult() {
@@ -241,7 +241,7 @@ public class CloudFoundryAppDeployerTests extends AbstractAppDeployerTestSupport
 
 		deployer.deploy(
 				new AppDeploymentRequest(new AppDefinition("test-application", Collections.emptyMap()), resource,
-						Collections.EMPTY_MAP));
+						Collections.emptyMap()));
 
 	}
 

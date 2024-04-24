@@ -105,9 +105,9 @@ import static org.mockito.Mockito.mock;
  * @author David Bernard
  */
 public class CloudFoundryTaskLauncherTests {
-	private final static int TASK_EXECUTION_COUNT = 10;
+	private static final int TASK_EXECUTION_COUNT = 10;
 
-	private final static String LOG_RESPONSE = "Test Log Response";
+	private static final String LOG_RESPONSE = "Test Log Response";
 
 	private final CloudFoundryDeploymentProperties deploymentProperties = new CloudFoundryDeploymentProperties();
 
@@ -137,7 +137,7 @@ public class CloudFoundryTaskLauncherTests {
 	@Mock(answer = Answers.RETURNS_SMART_NULLS)
 	private Tasks tasks;
 
-	private Resource resource = new FileSystemResource("src/test/resources/demo-0.0.1-SNAPSHOT.jar");
+	private final Resource resource = new FileSystemResource("src/test/resources/demo-0.0.1-SNAPSHOT.jar");
 
 	@BeforeEach
 	void setUp() {

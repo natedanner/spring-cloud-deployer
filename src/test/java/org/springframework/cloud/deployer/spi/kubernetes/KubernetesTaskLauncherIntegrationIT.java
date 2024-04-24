@@ -107,9 +107,8 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running));
 
 		String taskName = request.getDefinition().getName();
 
@@ -134,9 +133,8 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown));
 	}
 
 	@Test
@@ -158,9 +156,8 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running));
 
 		String taskName = request.getDefinition().getName();
 
@@ -185,9 +182,8 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown));
 	}
 
 	@Test
@@ -210,9 +206,8 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.running));
 
 		String taskName = request.getDefinition().getName();
 
@@ -243,8 +238,7 @@ public class KubernetesTaskLauncherIntegrationIT extends AbstractTaskLauncherInt
 
 		await().pollInterval(Duration.ofMillis(timeout.pause))
                 .atMost(Duration.ofMillis(timeout.totalTime))
-                .untilAsserted(() -> {
-			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown);
-        });
+                .untilAsserted(() ->
+			assertThat(taskLauncher().status(launchId).getState()).isEqualTo(LaunchState.unknown));
 	}
 }

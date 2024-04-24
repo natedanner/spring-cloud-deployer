@@ -488,9 +488,8 @@ public class KubernetesAppDeployerTests {
         AppDefinition definition = new AppDefinition("app-test", null);
         AppDeploymentRequest appDeploymentRequest = new AppDeploymentRequest(definition, getResource(), props);
 
-        assertThatThrownBy(() -> {
-            this.deploymentPropertiesResolver.getDeploymentLabels(appDeploymentRequest.getDeploymentProperties());
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() ->
+            this.deploymentPropertiesResolver.getDeploymentLabels(appDeploymentRequest.getDeploymentProperties())).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -501,9 +500,8 @@ public class KubernetesAppDeployerTests {
         AppDefinition definition = new AppDefinition("app-test", null);
         AppDeploymentRequest appDeploymentRequest = new AppDeploymentRequest(definition, getResource(), props);
 
-        assertThatThrownBy(() -> {
-            this.deploymentPropertiesResolver.getDeploymentLabels(appDeploymentRequest.getDeploymentProperties());
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() ->
+            this.deploymentPropertiesResolver.getDeploymentLabels(appDeploymentRequest.getDeploymentProperties())).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

@@ -103,9 +103,8 @@ public class CloudFoundryTaskLauncher extends AbstractCloudFoundryTaskLauncher {
 
 		return getOrDeployApplication(request)
 			.flatMap(application -> launchTask(application, request))
-			.doOnSuccess(r -> {
-				logger.info("Task {} launch successful", request.getDefinition().getName());
-			})
+			.doOnSuccess(r ->
+				logger.info("Task {} launch successful", request.getDefinition().getName()))
 			.doOnError(logError(String.format("Task %s launch failed", request.getDefinition().getName())))
 			.doOnTerminate(() -> {
 				if (pushTaskAppsEnabled()) {

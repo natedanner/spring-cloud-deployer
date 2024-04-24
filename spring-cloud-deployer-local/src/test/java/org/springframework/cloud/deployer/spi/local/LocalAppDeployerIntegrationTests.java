@@ -133,9 +133,8 @@ public class LocalAppDeployerIntegrationTests extends AbstractAppDeployerIntegra
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
 			.atMost(Duration.ofMillis(timeout.totalTime))
-			.untilAsserted(() -> {
-				assertThat(appDeployer.status(deploymentId).getState()).isEqualTo(DeploymentState.deployed);
-			});
+			.untilAsserted(() ->
+				assertThat(appDeployer.status(deploymentId).getState()).isEqualTo(DeploymentState.deployed));
 
 		Map<String, AppInstanceStatus> instances = appDeployer.status(deploymentId).getInstances();
 		String url = null;
@@ -154,9 +153,8 @@ public class LocalAppDeployerIntegrationTests extends AbstractAppDeployerIntegra
 		appDeployer.undeploy(deploymentId);
 		await().pollInterval(Duration.ofMillis(timeout.pause))
 			.atMost(Duration.ofMillis(timeout.totalTime))
-			.untilAsserted(() -> {
-				assertThat(appDeployer.status(deploymentId).getState()).isEqualTo(DeploymentState.unknown);
-			});
+			.untilAsserted(() ->
+				assertThat(appDeployer.status(deploymentId).getState()).isEqualTo(DeploymentState.unknown));
 
 		assertThat(url).isNotNull();
 		if (LocalDeployerUtils.isWindows()) {
@@ -185,9 +183,8 @@ public class LocalAppDeployerIntegrationTests extends AbstractAppDeployerIntegra
 		Timeout timeout = deploymentTimeout();
 		await().pollInterval(Duration.ofMillis(timeout.pause))
 			.atMost(Duration.ofMillis(timeout.totalTime))
-			.untilAsserted(() -> {
-				assertThat(appDeployer().status(deploymentId).getState()).isEqualTo(DeploymentState.deployed);
-			});
+			.untilAsserted(() ->
+				assertThat(appDeployer().status(deploymentId).getState()).isEqualTo(DeploymentState.deployed));
 		String logContent = appDeployer().getLog(deploymentId);
 		assertThat(logContent).contains("Starting DeployerIntegrationTestApplication");
 	}

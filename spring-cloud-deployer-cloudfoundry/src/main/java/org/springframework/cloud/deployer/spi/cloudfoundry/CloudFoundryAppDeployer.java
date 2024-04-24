@@ -114,9 +114,8 @@ public class CloudFoundryAppDeployer extends AbstractCloudFoundryDeployer implem
 		logger.trace("deploy: Pushing application");
 		pushApplication(deploymentId, request)
 			.timeout(Duration.ofSeconds(this.deploymentProperties.getApiTimeout()))
-			.doOnSuccess(item -> {
-				logger.info("Successfully deployed {}", deploymentId);
-			})
+			.doOnSuccess(item ->
+				logger.info("Successfully deployed {}", deploymentId))
 			.doOnError(error -> {
 				if (isNotFoundError().test(error)) {
 					logger.warn("Unable to deploy application. It may have been destroyed before start completed: " + error.getMessage());
@@ -124,9 +123,8 @@ public class CloudFoundryAppDeployer extends AbstractCloudFoundryDeployer implem
 					logError(String.format("Failed to deploy %s", deploymentId)).accept(error);
 				}
 			})
-			.doOnSuccessOrError((r, e) -> {
-				deleteLocalApplicationResourceFile(request);
-			})
+			.doOnSuccessOrError((r, e) ->
+				deleteLocalApplicationResourceFile(request))
 			.subscribe();
 
 		logger.trace("Exiting deploy().  Deployment Id = {}", deploymentId);
@@ -217,7 +215,7 @@ public class CloudFoundryAppDeployer extends AbstractCloudFoundryDeployer implem
 	public String getLog(String id) {
 		AppStatus status = status(id);
 		String cfGuid = status.getInstances().values().stream()
-				.map((appInstanceStatus) -> appInstanceStatus.getAttributes().get(CF_GUID_ID))
+				.map(appInstanceStatus -> appInstanceStatus.getAttributes().get(CF_GUID_ID))
 				.filter(Objects::nonNull)
 				.findFirst()
 				.orElseThrow(() -> new IllegalArgumentException("Unable to find " + CF_GUID_ID));

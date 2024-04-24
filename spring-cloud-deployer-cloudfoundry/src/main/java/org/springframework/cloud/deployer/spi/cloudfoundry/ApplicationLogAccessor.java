@@ -40,9 +40,9 @@ import java.util.List;
  */
 public class ApplicationLogAccessor {
 
-    private final static int MAX_LOG_LIMIT = 1000;
+    private static final int MAX_LOG_LIMIT = 1000;
 
-    private final static Logger logger = LoggerFactory.getLogger(ApplicationLogAccessor.class);
+    private static final Logger logger = LoggerFactory.getLogger(ApplicationLogAccessor.class);
     private final LogCacheClient logCacheClient;
 
     public ApplicationLogAccessor(LogCacheClient logCacheClient) {
@@ -71,7 +71,7 @@ public class ApplicationLogAccessor {
         if(logs == null) {
             return "";
         }
-        logs.forEach((log) -> {
+        logs.forEach(log -> {
             stringBuilder.append(log.getPayloadAsText());
             stringBuilder.append(System.lineSeparator());
         });
